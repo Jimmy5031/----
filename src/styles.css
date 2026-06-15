@@ -85,15 +85,16 @@ a {
 }
 
 .nav {
-  position: sticky;
-  top: 0;
+  position: absolute;
+  top: 16px;
+  left: 50%;
   z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 28px;
   width: min(1700px, calc(100% - 36px));
-  margin: 16px auto 0;
+  margin: 0;
   padding: 12px 18px;
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -102,6 +103,55 @@ a {
     rgba(0, 7, 7, 0.82);
   box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(22px) saturate(150%);
+  transform: translateX(-50%);
+  transition:
+    top 320ms var(--ease),
+    width 320ms var(--ease),
+    padding 320ms var(--ease),
+    border-color 320ms var(--ease),
+    border-radius 320ms var(--ease),
+    background 320ms var(--ease),
+    box-shadow 320ms var(--ease),
+    transform 320ms var(--ease);
+}
+
+.nav.is-floating {
+  position: fixed;
+  top: 14px;
+  width: min(1500px, calc(100% - 44px));
+  padding: 10px 16px;
+  border-color: rgba(205, 255, 232, 0.28);
+  border-radius: 999px;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.045)),
+    rgba(2, 10, 10, 0.58);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.56),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 60px rgba(89, 244, 122, 0.08);
+  backdrop-filter: blur(26px) saturate(175%);
+  animation: navFloatIn 420ms var(--ease);
+}
+
+@keyframes navFloatIn {
+  from {
+    opacity: 0.78;
+    transform: translateX(-50%) translateY(-18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.nav.is-floating .brand img {
+  height: 38px;
+  max-width: 176px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.nav.is-floating .nav-links a {
+  font-size: 0.9rem;
 }
 
 .brand {
@@ -175,7 +225,7 @@ a {
   min-height: calc(100vh - 84px);
   display: flex;
   align-items: center;
-  padding-top: 74px;
+  padding-top: 134px;
 }
 
 .hero::before,
@@ -1012,8 +1062,14 @@ small {
     align-items: flex-start;
     flex-direction: column;
     width: calc(100% - 24px);
-    margin-top: 10px;
+    top: 10px;
     border-radius: 16px;
+  }
+
+  .nav.is-floating {
+    width: calc(100% - 24px);
+    border-radius: 18px;
+    padding: 11px 14px;
   }
 
   .brand img {

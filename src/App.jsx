@@ -1,6 +1,15 @@
+import { useEffect, useState } from 'react';
 import logo from './assets/logo.png';
 
-const navItems = ['Home', 'Challenge', 'Solution', 'Dashboard', 'Roadmap', 'Value', 'Company'];
+const navItems = [
+  ['Home', 'home'],
+  ['Challenge', 'challenge'],
+  ['Solution', 'solution'],
+  ['Dashboard', 'dashboard'],
+  ['Roadmap', 'roadmap'],
+  ['Value', 'value'],
+  ['About Us', 'about-us'],
+];
 
 const Icon = ({ type }) => {
   const icons = {
@@ -108,16 +117,34 @@ const figures = [
 ];
 
 function App() {
+  const [isFloatingNav, setIsFloatingNav] = useState(false);
+
+  useEffect(() => {
+    const updateNavState = () => {
+      const triggerPoint = Math.max(420, window.innerHeight * 0.72);
+      setIsFloatingNav(window.scrollY > triggerPoint);
+    };
+
+    updateNavState();
+    window.addEventListener('scroll', updateNavState, { passive: true });
+    window.addEventListener('resize', updateNavState);
+
+    return () => {
+      window.removeEventListener('scroll', updateNavState);
+      window.removeEventListener('resize', updateNavState);
+    };
+  }, []);
+
   return (
     <div className="site-shell">
-      <header className="nav">
+      <header className={`nav${isFloatingNav ? ' is-floating' : ''}`}>
         <a className="brand" href="#home" aria-label="Nadi Mobility home">
           <img src={logo} alt="Nadi Mobility" />
           <span className="brand-fallback">NADI MOBILITY</span>
         </a>
         <nav className="nav-links" aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`}>
+          {navItems.map(([item, target]) => (
+            <a key={target} href={`#${target}`}>
               {item}
             </a>
           ))}
@@ -316,7 +343,7 @@ function App() {
           </div>
         </section>
 
-        <section id="company" className="section company-section">
+        <section id="about-us" className="section company-section">
           <div className="container company-grid">
             <div className="company-profile">
               <img src={logo} alt="Nadi Mobility" />
