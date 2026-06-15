@@ -1,93 +1,30 @@
 import { useEffect, useState } from 'react';
 import logo from './assets/logo.png';
+import umTouchModule from './assets/um-touch-module.png';
 
 const navItems = [
   ['Home', 'home'],
-  ['About Nadi', 'about-nadi'],
-  ['Project Overview', 'project-overview'],
-  ['Mobility Ecosystem', 'mobility-ecosystem'],
-  ['Dashboard', 'dashboard'],
-  ['Stakeholder Portal', 'stakeholder-portal'],
-  ['Value', 'value'],
+  ['About us', 'about-us'],
+  ['Services', 'services'],
+  ['Strategy Map', 'strategy-map'],
+  ['Project', 'project'],
+  ['Engagement', 'engagement'],
   ['Contact', 'contact'],
 ];
 
 const Icon = ({ type }) => {
   const icons = {
-    car: (
-      <>
-        <path d="M4 14h16l-2.3-5.3A3 3 0 0 0 15 7H9a3 3 0 0 0-2.7 1.7L4 14Z" />
-        <path d="M6 14v3M18 14v3M7.5 17h.01M16.5 17h.01" />
-      </>
-    ),
-    gate: (
-      <>
-        <path d="M5 20V8l7-4 7 4v12" />
-        <path d="M9 20v-7h6v7M7 10h10" />
-      </>
-    ),
-    parking: (
-      <>
-        <rect x="6" y="4" width="12" height="16" rx="3" />
-        <path d="M10 17V8h3.2a2.7 2.7 0 1 1 0 5.4H10" />
-      </>
-    ),
-    weather: (
-      <>
-        <path d="M8 15a4 4 0 0 1 .8-7.9A5.6 5.6 0 0 1 19 10.3 3.5 3.5 0 0 1 18 17H8Z" />
-        <path d="M9 20h.01M13 20h.01M17 20h.01" />
-      </>
-    ),
-    data: (
-      <>
-        <path d="M5 5v14h14" />
-        <path d="M8 15l3-4 3 2 4-6" />
-      </>
-    ),
-    shuttle: (
-      <>
-        <rect x="5" y="5" width="14" height="13" rx="3" />
-        <path d="M8 9h8M8 13h8M8 20h.01M16 20h.01" />
-      </>
-    ),
-    bike: (
-      <>
-        <circle cx="7" cy="17" r="3" />
-        <circle cx="17" cy="17" r="3" />
-        <path d="M9 17l3-7h2l3 7M12 10H9M13 13H9" />
-      </>
-    ),
-    leaf: (
-      <>
-        <path d="M19 4C10 4 5 9 5 18c7 0 12-5 14-14Z" />
-        <path d="M5 18c4-5 7-8 12-10" />
-      </>
-    ),
-    platform: (
-      <>
-        <rect x="5" y="5" width="14" height="14" rx="3" />
-        <path d="M8 9h8M8 13h4M8 17h6" />
-      </>
-    ),
-    users: (
-      <>
-        <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-        <circle cx="10" cy="7" r="4" />
-        <path d="M20 21v-2a3 3 0 0 0-2-2.8M16 3.2a4 4 0 0 1 0 7.6" />
-      </>
-    ),
-    alert: (
-      <>
-        <path d="M12 3 2.8 19h18.4L12 3Z" />
-        <path d="M12 9v4M12 17h.01" />
-      </>
-    ),
-    mail: (
-      <>
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="m4 7 8 6 8-6" />
-      </>
-    ),
+    car: <><path d="M4 14h16l-2.3-5.3A3 3 0 0 0 15 7H9a3 3 0 0 0-2.7 1.7L4 14Z" /><path d="M6 14v3M18 14v3M7.5 17h.01M16.5 17h.01" /></>,
+    gate: <><path d="M5 20V8l7-4 7 4v12" /><path d="M9 20v-7h6v7M7 10h10" /></>,
+    parking: <><rect x="6" y="4" width="12" height="16" rx="3" /><path d="M10 17V8h3.2a2.7 2.7 0 1 1 0 5.4H10" /></>,
+    data: <><path d="M5 5v14h14" /><path d="M8 15l3-4 3 2 4-6" /></>,
+    shuttle: <><rect x="5" y="5" width="14" height="13" rx="3" /><path d="M8 9h8M8 13h8M8 20h.01M16 20h.01" /></>,
+    bike: <><circle cx="7" cy="17" r="3" /><circle cx="17" cy="17" r="3" /><path d="M9 17l3-7h2l3 7M12 10H9M13 13H9" /></>,
+    leaf: <><path d="M19 4C10 4 5 9 5 18c7 0 12-5 14-14Z" /><path d="M5 18c4-5 7-8 12-10" /></>,
+    platform: <><rect x="5" y="5" width="14" height="14" rx="3" /><path d="M8 9h8M8 13h4M8 17h6" /></>,
+    users: <><path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="10" cy="7" r="4" /><path d="M20 21v-2a3 3 0 0 0-2-2.8M16 3.2a4 4 0 0 1 0 7.6" /></>,
+    alert: <><path d="M12 3 2.8 19h18.4L12 3Z" /><path d="M12 9v4M12 17h.01" /></>,
+    mail: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></>,
   };
 
   return (
@@ -98,6 +35,22 @@ const Icon = ({ type }) => {
     </svg>
   );
 };
+
+const services = [
+  ['data', 'Smart Mobility Master Planning', 'Campus mobility strategy, route planning, Park & Ride and active mobility integration.'],
+  ['platform', 'Project Management Office / PMO', 'Governance, schedule, cost, scope, quality, risk and reporting control.'],
+  ['data', 'PMIS & Dashboard Integration', 'Progress tracking, cost dashboards, risk registers and sustainability indicators.'],
+  ['shuttle', 'Sustainable Transport Infrastructure', 'Electric shuttle support, e-bike hubs, pedestrian corridors, charging and interchange facilities.'],
+  ['users', 'Stakeholder Engagement & Change Management', 'Surveys, pilot feedback, engagement portal, Green Miles incentives and communication strategy.'],
+  ['leaf', 'Sustainability & Carbon Performance Reporting', 'Energy use, ridership, carbon savings, SDG-linked reporting and social value indicators.'],
+];
+
+const strategyItems = [
+  ['Financial Value', 'Cost-effective green mobility delivery, 10-year TCO planning and sustainability financing readiness.'],
+  ['Stakeholder Value', 'Improved campus accessibility, safer user experience and transparent stakeholder communication.'],
+  ['Internal Process Excellence', 'PMO coordination, PMIS monitoring, procurement control, risk and change governance.'],
+  ['Learning & Growth', 'Smart mobility capability, green technology adaptation, carbon tracking and Malaysian campus knowledge.'],
+];
 
 const layers = [
   {
@@ -178,10 +131,10 @@ const portalItems = [
 ];
 
 const alignment = [
-  ['UM Master Plan 2050', 'Supports campus gate enhancement, Park & Ride, pedestrian routes and future-ready connectivity.'],
-  ['UM Sustainability Policy 2021-2030', 'Advances low-carbon mobility, resource efficiency and measurable performance.'],
-  ['UM Eco-Campus Blueprint', 'Turns transport alternatives into a practical campus-scale implementation package.'],
-  ['UM Impact Reports / SDGs', 'Provides data for SDG 7, SDG 9, SDG 11 and SDG 13 reporting.'],
+  ['UM Master Plan 2050', 'Campus gate enhancement, Park & Ride, pedestrian routes and future-ready connectivity.'],
+  ['UM Sustainability Policy 2021-2030', 'Low-carbon mobility, resource efficiency and measurable performance.'],
+  ['UM Eco-Campus Blueprint', 'Practical transport alternatives for a campus-scale sustainability programme.'],
+  ['UM Impact Reports / SDGs', 'Data for SDG 7, SDG 9, SDG 11 and SDG 13 reporting.'],
 ];
 
 const figures = [
@@ -231,85 +184,50 @@ function App() {
         <section id="home" className="hero section">
           <div className="hero-grid container">
             <div className="hero-copy">
-              <p className="eyebrow">Nadi Mobility Project Management Sdn. Bhd.</p>
-              <h1>UM Zero-Emission Smart Campus Mobility Ecosystem</h1>
+              <p className="eyebrow">Malaysian smart mobility project management consultancy</p>
+              <h1>Nadi Mobility Project Management Sdn. Bhd.</h1>
+              <p className="hero-tagline">Plan Smart. Move Green. Deliver Sustainably.</p>
               <p className="hero-subtitle">
-                Building a smarter, greener and more connected UM campus through Park & Ride, electric shuttle,
-                Green Spine, e-bike integration and PMIS monitoring.
+                We deliver sustainable transport infrastructure, smart mobility systems and low-carbon campus
+                transformation programmes for future-ready communities.
               </p>
               <div className="hero-actions expanded">
-                <a className="button primary" href="#project-overview">
-                  View Proposal
-                </a>
-                <a className="button secondary" href="#dashboard">
-                  View Mobility Dashboard
-                </a>
-                <a className="button secondary" href="#mobility-ecosystem">
-                  Explore UM Touch Mobility Module
-                </a>
-                <a className="button secondary" href="#stakeholder-portal">
-                  Submit Feedback
-                </a>
-              </div>
-              <div className="hero-stats" aria-label="Proposal highlights">
-                <span><strong>5</strong> system layers</span>
-                <span><strong>10-year</strong> roadmap</span>
-                <span><strong>PMIS</strong> monitoring</span>
+                <a className="button primary" href="#about-us">Explore Our Company</a>
+                <a className="button secondary" href="#strategy-map">View Strategy Map</a>
+                <a className="button secondary" href="#project">Featured Project: UM Green Mobility</a>
               </div>
             </div>
 
-            <div className="campus-visual" aria-label="Smart campus mobility concept visual">
-              <div className="visual-orbit orbit-a" />
-              <div className="visual-orbit orbit-b" />
-              <div className="route-map">
-                <span className="node n1"><Icon type="parking" /></span>
-                <span className="node n2"><Icon type="shuttle" /></span>
-                <span className="node n3"><Icon type="bike" /></span>
-                <span className="node n4"><Icon type="leaf" /></span>
-                <span className="node n5"><Icon type="platform" /></span>
-                <div className="campus-core">
-                  <span>UM TOUCH + PMIS</span>
-                  <strong>Smart Mobility Core</strong>
-                </div>
+            <div className="featured-project-card">
+              <p className="eyebrow">Featured Project</p>
+              <h2>UM Zero-Emission Smart Campus Mobility Ecosystem</h2>
+              <p>
+                A phased, smart and low-carbon proposal for Universiti Malaya's Carbon Neutral Campus 2050 direction.
+              </p>
+              <div className="hero-stats">
+                <span><strong>5</strong> integrated layers</span>
+                <span><strong>PMIS</strong> monitored</span>
+                <span><strong>10-year</strong> value view</span>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="about-nadi" className="section company-section">
-          <div className="container company-grid">
-            <div className="company-profile">
-              <img src={logo} alt="Nadi Mobility" />
-              <p className="eyebrow">About Nadi</p>
-              <h2>Nadi Mobility Project Management Sdn. Bhd.</h2>
-              <p>
-                A Malaysian-based project management consultancy positioned to deliver sustainable transport
-                infrastructure, smart mobility systems, PMIS integration, stakeholder engagement and sustainability
-                reporting for complex campus environments.
-              </p>
-              <p>
-                For the UM proposal, Nadi Mobility acts as the project integrator: translating campus mobility
-                challenges into a phased, procurable and monitorable low-carbon mobility programme.
-              </p>
-            </div>
-            <div className="approach-card">
-              <p className="eyebrow">Our Delivery Capability</p>
-              <div className="approach-grid">
-                <span>PMBOK controls</span>
-                <span>PRINCE2 stage gates</span>
-                <span>ISO 21500 alignment</span>
-                <span>Hybrid / Agile digital delivery</span>
-              </div>
-              <div className="why-card">
-                <h3>Why Nadi Mobility?</h3>
-                <p>
-                  We combine local Malaysian operating context, green mobility expertise, smart campus integration and
-                  stakeholder-facing delivery discipline in one accountable proposal team.
-                </p>
-              </div>
-            </div>
+        <section id="about-us" className="section company-section">
+          <div className="container about-grid">
+            {[
+              ['Who We Are', 'Nadi Mobility is a Malaysian-based project management consultancy focused on sustainable transport infrastructure, smart mobility systems and low-carbon campus development.'],
+              ['What Nadi Means', 'Nadi means pulse - connecting people, places and performance through smarter green mobility.'],
+              ['Vision', 'To become a trusted Malaysian project management consultancy for future-ready sustainable mobility delivery.'],
+              ['Mission', 'To plan, manage and deliver mobility solutions that improve accessibility, reduce carbon impact and create measurable stakeholder value.'],
+            ].map(([title, text]) => (
+              <article className="info-card" key={title}>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
           </div>
-          <div className="container capability-strip" aria-label="Nadi Mobility capability tags">
+          <div className="container capability-strip">
             <span>Local Malaysian Context</span>
             <span>Green Mobility Expertise</span>
             <span>Smart Campus Integration</span>
@@ -317,73 +235,15 @@ function App() {
           </div>
         </section>
 
-        <section id="project-overview" className="section overview-section">
+        <section id="services" className="section">
           <div className="container">
             <div className="section-heading wide">
-              <p className="eyebrow">Project Overview</p>
-              <h2>Five connected system layers forming one smart campus mobility programme.</h2>
-              <p>
-                Click each layer to view how infrastructure, service operations, user experience and PMIS data connect
-                into a single proposal-stage ecosystem.
-              </p>
+              <p className="eyebrow">Services</p>
+              <h2>Professional services for sustainable mobility delivery.</h2>
             </div>
-
-            <div className="layer-showcase">
-              <div className="layer-tabs" role="tablist" aria-label="Project system layers">
-                {layers.map((layer) => (
-                  <button
-                    className={`layer-tab${activeLayer.id === layer.id ? ' active' : ''}`}
-                    key={layer.id}
-                    type="button"
-                    onClick={() => setActiveLayer(layer)}
-                  >
-                    <Icon type={layer.icon} />
-                    <span>{layer.title}</span>
-                  </button>
-                ))}
-              </div>
-
-              <div className="layer-stage">
-                <div className={`layer-visual ${activeLayer.id}`}>
-                  <div className="layer-ring ring-one" />
-                  <div className="layer-ring ring-two" />
-                  <div className="layer-label">
-                    <span>{activeLayer.visual}</span>
-                    <strong>{activeLayer.focus}</strong>
-                  </div>
-                  <i className="pulse-dot dot-a" />
-                  <i className="pulse-dot dot-b" />
-                  <i className="pulse-dot dot-c" />
-                </div>
-                <article className="layer-detail">
-                  <p className="eyebrow">Active Layer</p>
-                  <h3>{activeLayer.title}</h3>
-                  <p>{activeLayer.short}</p>
-                  <div className="layer-points">
-                    {activeLayer.points.map((point) => (
-                      <span key={point}>{point}</span>
-                    ))}
-                  </div>
-                </article>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="mobility-ecosystem" className="section solution-section">
-          <div className="container">
-            <div className="section-heading wide">
-              <p className="eyebrow">Mobility Ecosystem</p>
-              <h2>Physical assets, UM Touch functions and PMIS reporting are designed as one operating system.</h2>
-              <p>
-                The ecosystem is intended to guide transfer decisions, service reliability, Green Miles engagement,
-                issue reporting and sustainability monitoring.
-              </p>
-            </div>
-            <div className="ecosystem">
-              {ecosystemCards.map(([icon, title, text], index) => (
+            <div className="services-grid">
+              {services.map(([icon, title, text]) => (
                 <article className="solution-card" key={title}>
-                  <span className="step">{String(index + 1).padStart(2, '0')}</span>
                   <Icon type={icon} />
                   <h3>{title}</h3>
                   <p>{text}</p>
@@ -393,111 +253,160 @@ function App() {
           </div>
         </section>
 
-        <section id="dashboard" className="section">
-          <div className="container dashboard-layout">
-            <div className="section-heading dashboard-copy">
-              <p className="eyebrow">PMIS / Sustainability Dashboard</p>
-              <h2>Data-driven monitoring for delivery, operations, finance and sustainability.</h2>
-              <p>
-                The existing dashboard has been upgraded into a PMIS and sustainability monitoring concept, because the
-                proposal needs evidence-based performance control rather than a second duplicated dashboard section.
-              </p>
-              <p className="dashboard-note standalone">Prototype dashboard for proposal demonstration only.</p>
+        <section id="strategy-map" className="section strategy-section">
+          <div className="container">
+            <div className="section-heading wide">
+              <p className="eyebrow">Corporate Strategy Map</p>
+              <h2>Balanced-scorecard delivery logic from financial discipline to sustainable outcomes.</h2>
             </div>
-            <div className="dashboard-panel expanded-dashboard">
-              <div className="dashboard-top">
-                <span>UM Mobility PMIS Concept</span>
-                <strong>Prototype Data</strong>
-              </div>
-              <div className="metric-grid dashboard-metrics">
-                {dashboardMetrics.map(([label, value, note]) => (
-                  <div className="metric-card" key={label}>
-                    <span>{label}</span>
-                    <strong>{value}</strong>
-                    <small>{note}</small>
-                  </div>
-                ))}
-              </div>
-              <div className="monitoring-row">
-                <div>
-                  <span>Energy and carbon monitoring</span>
-                  <strong>Live PMIS feed concept</strong>
-                  <small>kWh, avoided vehicle trips, CO2e, issue status and user feedback linked for decision gates.</small>
-                </div>
-                <div className="bars" aria-hidden="true">
-                  <span style={{ height: '42%' }} />
-                  <span style={{ height: '64%' }} />
-                  <span style={{ height: '52%' }} />
-                  <span style={{ height: '78%' }} />
-                  <span style={{ height: '68%' }} />
-                </div>
+            <div className="strategy-map">
+              {strategyItems.map(([title, text], index) => (
+                <article className="strategy-layer" key={title}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                </article>
+              ))}
+              <div className="strategy-outcome">
+                Strategic Outcome: Future-ready, low-carbon and digitally enabled campus mobility ecosystem.
               </div>
             </div>
           </div>
         </section>
 
-        <section id="stakeholder-portal" className="section portal-section">
+        <section id="project" className="section project-section">
           <div className="container">
             <div className="section-heading wide">
-              <p className="eyebrow">Stakeholder Portal</p>
-              <h2>A prototype engagement portal for UM students, staff, visitors and project governance teams.</h2>
+              <p className="eyebrow">Featured Project Portal</p>
+              <h2>UM Zero-Emission Smart Campus Mobility Ecosystem</h2>
               <p>
-                This section is designed to look like a usable service portal, even before real backend workflows are
-                connected.
+                The UM project is presented as a full proposal portal with project overview, ecosystem design, UM Touch
+                module concept, PMIS dashboard and commercial value evidence.
               </p>
             </div>
-            <div className="portal-layout">
-              <div className="portal-grid">
-                {portalItems.map(([icon, title, text]) => (
-                  <article className="portal-card" key={title}>
+            <nav className="project-subnav" aria-label="UM project sections">
+              <a href="#project-overview">Project Overview</a>
+              <a href="#mobility-ecosystem">Mobility Ecosystem</a>
+              <a href="#um-touch">UM Touch Module</a>
+              <a href="#dashboard">Dashboard</a>
+              <a href="#value">Value</a>
+            </nav>
+
+            <div id="project-overview" className="project-panel project-overview">
+              <div>
+                <p className="eyebrow">Project Overview</p>
+                <h3>From campus mobility pressure to a phased smart mobility programme.</h3>
+                <p>
+                  UM faces private vehicle dependency, peak-hour gate congestion, parking pressure, hilly terrain,
+                  tropical weather and limited real-time mobility information. Nadi's proposal responds through
+                  stage-gated implementation, PMO governance, PMIS monitoring and low-carbon transport alternatives.
+                </p>
+              </div>
+              <div className="project-facts">
+                <span>Campus-edge vehicle interception</span>
+                <span>Electric shuttle network</span>
+                <span>Green Spine and e-bike access</span>
+                <span>UM Touch + PMIS data layer</span>
+              </div>
+            </div>
+
+            <div id="mobility-ecosystem" className="project-panel">
+              <div className="section-heading wide">
+                <p className="eyebrow">Mobility Ecosystem</p>
+                <h3>Five connected system layers forming one campus mobility ecosystem.</h3>
+              </div>
+              <div className="layer-showcase">
+                <div className="layer-tabs" role="tablist" aria-label="Project system layers">
+                  {layers.map((layer) => (
+                    <button
+                      className={`layer-tab${activeLayer.id === layer.id ? ' active' : ''}`}
+                      key={layer.id}
+                      type="button"
+                      onClick={() => setActiveLayer(layer)}
+                    >
+                      <Icon type={layer.icon} />
+                      <span>{layer.title}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="layer-stage">
+                  <div className={`layer-visual ${activeLayer.id}`}>
+                    <div className="layer-ring ring-one" />
+                    <div className="layer-ring ring-two" />
+                    <div className="layer-label">
+                      <span>{activeLayer.visual}</span>
+                      <strong>{activeLayer.focus}</strong>
+                    </div>
+                    <i className="pulse-dot dot-a" />
+                    <i className="pulse-dot dot-b" />
+                    <i className="pulse-dot dot-c" />
+                  </div>
+                  <article className="layer-detail">
+                    <p className="eyebrow">Active Layer</p>
+                    <h3>{activeLayer.title}</h3>
+                    <p>{activeLayer.short}</p>
+                    <div className="layer-points">
+                      {activeLayer.points.map((point) => <span key={point}>{point}</span>)}
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div className="ecosystem">
+                {ecosystemCards.map(([icon, title, text], index) => (
+                  <article className="solution-card" key={title}>
+                    <span className="step">{String(index + 1).padStart(2, '0')}</span>
                     <Icon type={icon} />
                     <h3>{title}</h3>
                     <p>{text}</p>
                   </article>
                 ))}
               </div>
-              <form className="feedback-prototype">
-                <p className="eyebrow">Prototype Feedback Form</p>
-                <label>
-                  User group
-                  <select defaultValue="student">
-                    <option value="student">Student</option>
-                    <option value="staff">Staff</option>
-                    <option value="visitor">Visitor</option>
-                    <option value="management">UM Management</option>
-                  </select>
-                </label>
-                <label>
-                  Feedback type
-                  <select defaultValue="shuttle">
-                    <option value="shuttle">Shuttle service issue</option>
-                    <option value="park">Park & Ride feedback</option>
-                    <option value="bike">E-bike / walking route feedback</option>
-                    <option value="general">General proposal feedback</option>
-                  </select>
-                </label>
-                <label>
-                  Message
-                  <textarea placeholder="Describe your issue, suggestion or route experience..." />
-                </label>
-                <button className="button primary" type="button">Submit Feedback</button>
-                <small>Prototype only - no data is submitted in this version.</small>
-              </form>
             </div>
-          </div>
-        </section>
 
-        <section id="value" className="section">
-          <div className="container">
-            <div className="section-heading wide">
-              <p className="eyebrow">Strategic and Commercial Value</p>
-              <h2>Public campus infrastructure value beyond direct financial profit.</h2>
-              <p>
-                The project combines financial discipline, social value, sustainability reporting, accessibility and
-                institutional reputation into one managed mobility programme.
-              </p>
+            <div id="um-touch" className="project-panel touch-module">
+              <div className="touch-copy">
+                <p className="eyebrow">Digital Smart Platform</p>
+                <h3>UM Touch Mobility Module</h3>
+                <p>
+                  A concept user interface for real-time shuttle tracking, Park & Ride availability, route intelligence,
+                  Green Miles, carbon savings and stakeholder feedback.
+                </p>
+                <div className="touch-features">
+                  <span>Live Tracking</span>
+                  <span>Route Intelligence</span>
+                  <span>Low-Carbon Mobility</span>
+                  <span>Integrated Experience</span>
+                </div>
+              </div>
+              <div className="touch-image-frame" aria-label="UM Touch Mobility Module visual concept">
+                <img src={umTouchModule} alt="UM Touch Mobility Module real-time shuttle and mobility management concept" />
+              </div>
             </div>
-            <div className="value-layout">
+
+            <div id="dashboard" className="project-panel dashboard-layout">
+              <div className="section-heading dashboard-copy">
+                <p className="eyebrow">PMIS / Sustainability Dashboard</p>
+                <h3>Data-driven monitoring for delivery, operations, finance and sustainability.</h3>
+                <p className="dashboard-note standalone">Prototype dashboard for proposal demonstration only.</p>
+              </div>
+              <div className="dashboard-panel expanded-dashboard">
+                <div className="dashboard-top">
+                  <span>UM Mobility PMIS Concept</span>
+                  <strong>Prototype Data</strong>
+                </div>
+                <div className="metric-grid dashboard-metrics">
+                  {dashboardMetrics.map(([label, value, note]) => (
+                    <div className="metric-card" key={label}>
+                      <span>{label}</span>
+                      <strong>{value}</strong>
+                      <small>{note}</small>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div id="value" className="project-panel value-layout">
               <div className="alignment-grid">
                 {alignment.map(([title, text]) => (
                   <article className="alignment-card" key={title}>
@@ -517,31 +426,51 @@ function App() {
             </div>
           </div>
         </section>
+
+        <section id="engagement" className="section portal-section">
+          <div className="container">
+            <div className="section-heading wide">
+              <p className="eyebrow">Engagement</p>
+              <h2>Stakeholder Engagement Portal</h2>
+              <p>A prototype engagement interface for UM students, staff, visitors and project teams.</p>
+            </div>
+            <div className="portal-layout">
+              <div className="portal-grid">
+                {portalItems.map(([icon, title, text]) => (
+                  <article className="portal-card" key={title}>
+                    <Icon type={icon} />
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </article>
+                ))}
+              </div>
+              <form className="feedback-prototype">
+                <p className="eyebrow">Prototype Feedback Form</p>
+                <label>User group<select defaultValue="student"><option>Student</option><option>Staff</option><option>Visitor</option><option>UM Management</option></select></label>
+                <label>Feedback type<select defaultValue="shuttle"><option>Shuttle service issue</option><option>Park & Ride feedback</option><option>E-bike / walking route feedback</option><option>General proposal feedback</option></select></label>
+                <label>Message<textarea placeholder="Describe your issue, suggestion or route experience..." /></label>
+                <button className="button primary" type="button">Submit Feedback</button>
+                <small>Prototype only - no data is submitted in this version.</small>
+              </form>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer id="contact" className="footer">
         <div className="container">
           <div className="section-heading">
             <p className="eyebrow">Contact</p>
-            <h2>Engage Nadi Mobility for proposal review, dashboard demonstration and stakeholder pilot planning.</h2>
+            <h2>Contact Nadi Mobility for proposal review, dashboard demonstration and stakeholder pilot planning.</h2>
           </div>
           <div className="engagement-grid">
-            <article>
-              <h3>UM Management</h3>
-              <p>View proposal, dashboard and stage-gate decision evidence.</p>
-            </article>
-            <article>
-              <h3>Students & Staff</h3>
-              <p>Submit mobility feedback and join the Green Miles pilot.</p>
-            </article>
-            <article>
-              <h3>Project Team</h3>
-              <p>Track PMIS progress, issue logs and sustainability indicators.</p>
-            </article>
+            <article><h3>Email</h3><p>24215346@siswa.um.edu.my</p></article>
+            <article><h3>Project Inquiry</h3><p>Request UM proposal discussion or dashboard walkthrough.</p></article>
+            <article><h3>Stakeholder Feedback</h3><p>Use the Engagement portal to submit user mobility input.</p></article>
           </div>
           <div className="footer-bottom">
             <span>Nadi Mobility</span>
-            <span>Building smarter mobility. Creating sustainable impact.</span>
+            <span>Plan Smart. Move Green. Deliver Sustainably.</span>
           </div>
         </div>
       </footer>
