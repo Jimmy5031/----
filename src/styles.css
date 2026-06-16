@@ -1149,43 +1149,91 @@ p {
     rgba(255, 255, 255, 0.04);
 }
 
-.touch-image-frame {
+.touch-screens {
   position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(141, 255, 191, 0.22);
-  border-radius: 30px;
-  background:
-    radial-gradient(circle at 68% 12%, rgba(89, 244, 122, 0.22), transparent 34%),
-    linear-gradient(145deg, rgba(11, 41, 35, 0.78), rgba(1, 8, 10, 0.98));
-  box-shadow: var(--shadow), 0 0 80px rgba(89, 244, 122, 0.1);
+  min-height: 720px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 18px;
 }
 
-.touch-image-frame::before {
+.touch-screens::before {
+  content: "";
+  position: absolute;
+  inset: 8% 4%;
+  z-index: 0;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(89, 244, 122, 0.16), transparent 34%),
+    radial-gradient(circle at 76% 70%, rgba(80, 212, 255, 0.1), transparent 30%);
+  filter: blur(6px);
+}
+
+.touch-screen-card {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid rgba(141, 255, 191, 0.22);
+  border-radius: 32px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(1, 8, 10, 0.88);
+  box-shadow: 0 28px 86px rgba(0, 0, 0, 0.52);
+  transform: translateY(20px) rotate(-3deg) scale(0.92);
+  transition: transform 360ms var(--ease), border-color 360ms var(--ease), box-shadow 360ms var(--ease);
+}
+
+.touch-screen-card:nth-child(3) {
+  transform: translateY(20px) rotate(3deg) scale(0.92);
+}
+
+.touch-screen-card.featured-screen {
+  z-index: 2;
+  transform: translateY(-10px) scale(1.04);
+  border-color: rgba(141, 255, 191, 0.42);
+  box-shadow: 0 36px 110px rgba(0, 0, 0, 0.68), 0 0 70px rgba(89, 244, 122, 0.14);
+}
+
+.touch-screen-card::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  border-radius: inherit;
   background:
-    linear-gradient(120deg, rgba(255, 255, 255, 0.16), transparent 22%, transparent 76%, rgba(141, 255, 191, 0.08)),
-    radial-gradient(circle at 50% 100%, rgba(89, 244, 122, 0.16), transparent 34%);
+    linear-gradient(120deg, rgba(255, 255, 255, 0.18), transparent 18%, transparent 74%, rgba(141, 255, 191, 0.08));
   mix-blend-mode: screen;
 }
 
-.touch-image-frame img {
+.touch-screen-card img {
   display: block;
   width: 100%;
-  height: auto;
-  min-height: 520px;
+  aspect-ratio: 9 / 16;
   object-fit: cover;
-  object-position: center;
-  transform: scale(1.01);
-  transition: transform 420ms var(--ease), filter 420ms var(--ease);
+  object-position: top center;
+  border-radius: 24px;
+  background: #fff;
 }
 
-.touch-image-frame:hover img {
-  transform: scale(1.035);
-  filter: saturate(1.08) brightness(1.04);
+.touch-screen-card figcaption {
+  padding: 14px 4px 2px;
+  color: #dff8ef;
+  font-size: 0.92rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.touch-screen-card:hover {
+  transform: translateY(-14px) rotate(0deg) scale(1);
+  border-color: var(--line-strong);
+  box-shadow: 0 36px 100px rgba(0, 0, 0, 0.66), 0 0 64px rgba(89, 244, 122, 0.14);
+}
+
+.touch-screen-card.featured-screen:hover {
+  transform: translateY(-22px) scale(1.08);
 }
 
 .phone-stage {
@@ -1738,8 +1786,9 @@ small {
     min-height: 620px;
   }
 
-  .touch-image-frame img {
-    min-height: 420px;
+  .touch-screens {
+    min-height: 620px;
+    gap: 12px;
   }
 }
 
@@ -1851,12 +1900,19 @@ small {
     min-height: 760px;
   }
 
-  .touch-image-frame {
-    border-radius: 22px;
+  .touch-screens {
+    min-height: auto;
+    grid-template-columns: 1fr;
   }
 
-  .touch-image-frame img {
-    min-height: 300px;
+  .touch-screen-card,
+  .touch-screen-card:nth-child(3),
+  .touch-screen-card.featured-screen {
+    transform: none;
+  }
+
+  .touch-screen-card img {
+    aspect-ratio: 10 / 13;
   }
 
   .phone,

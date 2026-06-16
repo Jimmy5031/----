@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import logo from './assets/logo.png';
-import umTouchModule from './assets/um-touch-module.png';
+import umTouchNetwork from './assets/um-touch-network.jpg';
+import umTouchJourney from './assets/um-touch-journey.jpg';
+import umTouchGreenMiles from './assets/um-touch-green-miles.jpg';
 
 const navItems = [
   ['Home', 'home'],
@@ -378,8 +380,19 @@ function App() {
                   <span>Integrated Experience</span>
                 </div>
               </div>
-              <div className="touch-image-frame" aria-label="UM Touch Mobility Module visual concept">
-                <img src={umTouchModule} alt="UM Touch Mobility Module real-time shuttle and mobility management concept" />
+              <div className="touch-screens" aria-label="UM Touch Mobility Module app screen concepts">
+                <figure className="touch-screen-card">
+                  <img src={umTouchJourney} alt="UM Touch journey planning and Green Miles screen" />
+                  <figcaption>Journey Planning</figcaption>
+                </figure>
+                <figure className="touch-screen-card featured-screen">
+                  <img src={umTouchNetwork} alt="UM Touch campus shuttle network screen" />
+                  <figcaption>Campus Network</figcaption>
+                </figure>
+                <figure className="touch-screen-card">
+                  <img src={umTouchGreenMiles} alt="UM Touch Green Miles low-carbon impact screen" />
+                  <figcaption>Green Miles Impact</figcaption>
+                </figure>
               </div>
             </div>
 
