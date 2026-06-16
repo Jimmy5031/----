@@ -1968,3 +1968,469 @@ small {
     flex-direction: column;
   }
 }
+
+/* Light Nadi / UM proposal brand skin.
+   This section intentionally overrides visual treatment only; layout and content stay unchanged. */
+:root {
+  color-scheme: light;
+  --bg: #f6f9f3;
+  --bg-2: #edf5ec;
+  --panel: rgba(255, 255, 255, 0.78);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(11, 45, 93, 0.12);
+  --line-strong: rgba(48, 137, 46, 0.32);
+  --text: #09295c;
+  --muted: #5c6f78;
+  --blue: #0b2d5d;
+  --green: #2f8f2f;
+  --mint: #7ebd43;
+  --navy: #08275a;
+  --shadow: 0 24px 70px rgba(8, 39, 90, 0.12);
+}
+
+body {
+  background:
+    radial-gradient(circle at 13% 6%, rgba(126, 189, 67, 0.2), transparent 24rem),
+    radial-gradient(circle at 86% 10%, rgba(11, 45, 93, 0.13), transparent 26rem),
+    radial-gradient(circle at 70% 76%, rgba(47, 143, 47, 0.13), transparent 30rem),
+    linear-gradient(145deg, #ffffff 0%, #f7faf4 45%, #edf5ec 100%);
+  color: var(--text);
+}
+
+body::before {
+  background-image:
+    linear-gradient(rgba(11, 45, 93, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 143, 47, 0.035) 1px, transparent 1px);
+  opacity: 0.75;
+  mask-image: radial-gradient(circle at 50% 12%, black, transparent 72%);
+}
+
+body::after {
+  opacity: 0.18;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(11, 45, 93, 0.16) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 65%, rgba(47, 143, 47, 0.18) 0 1px, transparent 1px);
+  mix-blend-mode: multiply;
+}
+
+.site-shell {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(246, 249, 243, 0.86)),
+    radial-gradient(circle at 8% 20%, rgba(126, 189, 67, 0.12), transparent 22rem);
+}
+
+.nav,
+.nav.is-floating {
+  border-color: rgba(11, 45, 93, 0.14);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(241, 248, 239, 0.72)),
+    rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 18px 52px rgba(8, 39, 90, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.nav.is-floating {
+  border-color: rgba(47, 143, 47, 0.22);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(244, 250, 241, 0.7)),
+    rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 20px 60px rgba(8, 39, 90, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+}
+
+.brand img,
+.nav.is-floating .brand img {
+  background: #ffffff;
+  box-shadow: 0 8px 22px rgba(8, 39, 90, 0.12);
+}
+
+.nav-links a {
+  color: #193762;
+  opacity: 0.88;
+}
+
+.nav-links a::after {
+  background: linear-gradient(90deg, transparent, var(--green), var(--mint), transparent);
+}
+
+.nav-links a:hover,
+.project-subnav a:hover {
+  color: var(--green);
+}
+
+.hero::before,
+.solution-section::before,
+.roadmap-section::before {
+  opacity: 0.38;
+  background-image:
+    linear-gradient(rgba(11, 45, 93, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 143, 47, 0.04) 1px, transparent 1px);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--navy);
+  text-shadow: none;
+}
+
+p,
+.hero-subtitle,
+.section-heading p,
+.featured-project-card p,
+.featured-project-card .hero-stats,
+.metric-card span,
+.figure span,
+.monitoring-row span,
+.phone span,
+.phone small {
+  color: var(--muted);
+}
+
+.eyebrow,
+.hero-tagline,
+.strategy-layer span,
+.timeline-item span,
+.layer-label span {
+  color: var(--green);
+  text-shadow: none;
+}
+
+.button {
+  border-color: rgba(11, 45, 93, 0.13);
+  box-shadow: 0 12px 26px rgba(8, 39, 90, 0.13);
+}
+
+.button.primary {
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 24% 12%, rgba(255, 255, 255, 0.34), transparent 18%),
+    linear-gradient(135deg, #0b2d5d 0%, #176f56 48%, #7ebd43 100%);
+  box-shadow:
+    0 16px 38px rgba(47, 143, 47, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+.button.primary:hover {
+  box-shadow:
+    0 22px 54px rgba(47, 143, 47, 0.3),
+    0 0 0 1px rgba(126, 189, 67, 0.36);
+}
+
+.button.secondary {
+  color: var(--navy);
+  border-color: rgba(11, 45, 93, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(238, 247, 235, 0.86));
+}
+
+.button.secondary:hover {
+  border-color: rgba(47, 143, 47, 0.38);
+  background:
+    radial-gradient(circle at 35% 10%, rgba(126, 189, 67, 0.18), transparent 38%),
+    rgba(255, 255, 255, 0.92);
+  box-shadow: 0 18px 42px rgba(8, 39, 90, 0.15);
+}
+
+.hero-stats span,
+.project-facts span,
+.touch-features span,
+.capability-strip span,
+.approach-grid span,
+.layer-points span {
+  border-color: rgba(11, 45, 93, 0.12);
+  color: #49616d;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(239, 248, 236, 0.72));
+  box-shadow: 0 10px 24px rgba(8, 39, 90, 0.07);
+}
+
+.hero-stats strong,
+.metric-card strong,
+.figure strong,
+.monitoring-row strong,
+.phone strong {
+  color: var(--navy);
+}
+
+.featured-project-card,
+.campus-visual,
+.layer-stage,
+.layer-visual,
+.project-panel,
+.dashboard-panel,
+.figure-panel,
+.strategy-outcome,
+.touch-screens,
+.phone-stage {
+  border-color: rgba(11, 45, 93, 0.12);
+  background:
+    radial-gradient(circle at 16% 12%, rgba(126, 189, 67, 0.22), transparent 26rem),
+    radial-gradient(circle at 86% 8%, rgba(11, 45, 93, 0.13), transparent 28rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(239, 247, 236, 0.72));
+  box-shadow: var(--shadow);
+}
+
+.featured-project-card::before,
+.campus-visual::before,
+.dashboard-panel::before,
+.touch-screens::before {
+  opacity: 0.32;
+  background:
+    linear-gradient(rgba(11, 45, 93, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 143, 47, 0.038) 1px, transparent 1px);
+}
+
+.campus-visual::after {
+  background:
+    radial-gradient(circle, rgba(126, 189, 67, 0.34), transparent 62%),
+    radial-gradient(circle, rgba(11, 45, 93, 0.13), transparent 70%);
+}
+
+.visual-orbit,
+.route-map,
+.route-map::before,
+.layer-ring {
+  border-color: rgba(11, 45, 93, 0.16);
+}
+
+.campus-core,
+.node,
+.layer-label,
+.pulse-dot,
+.route-loop i,
+.route-loop span {
+  border-color: rgba(47, 143, 47, 0.22);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(229, 244, 225, 0.82));
+  color: var(--navy);
+  box-shadow: 0 14px 34px rgba(8, 39, 90, 0.12);
+}
+
+.campus-core span,
+.campus-core strong,
+.layer-label strong {
+  color: var(--navy);
+}
+
+.info-card,
+.solution-card,
+.alignment-card,
+.metric-card,
+.approach-card,
+.portal-card,
+.feedback-prototype,
+.layer-detail,
+.engagement-grid article,
+.company-profile,
+.strategy-layer,
+.timeline-item,
+.figure,
+.monitoring-row,
+.touch-screen-card {
+  border-color: rgba(11, 45, 93, 0.12);
+  background:
+    radial-gradient(circle at 82% 8%, rgba(126, 189, 67, 0.16), transparent 15rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(246, 250, 243, 0.8));
+  box-shadow: 0 18px 46px rgba(8, 39, 90, 0.09);
+}
+
+.info-card::before,
+.solution-card::before,
+.alignment-card::before,
+.metric-card::before,
+.approach-card::before,
+.portal-card::before,
+.feedback-prototype::before,
+.layer-detail::before,
+.engagement-grid article::before,
+.company-profile::before {
+  background: linear-gradient(90deg, var(--green), var(--mint), rgba(11, 45, 93, 0.22));
+}
+
+.info-card::after,
+.solution-card::after,
+.alignment-card::after,
+.metric-card::after,
+.approach-card::after,
+.portal-card::after,
+.feedback-prototype::after,
+.layer-detail::after,
+.engagement-grid article::after,
+.company-profile::after {
+  background: linear-gradient(115deg, transparent 25%, rgba(126, 189, 67, 0.2) 50%, transparent 72%);
+}
+
+.info-card:hover,
+.solution-card:hover,
+.alignment-card:hover,
+.metric-card:hover,
+.approach-card:hover,
+.portal-card:hover,
+.feedback-prototype:hover,
+.layer-detail:hover,
+.engagement-grid article:hover,
+.company-profile:hover,
+.strategy-layer:hover,
+.timeline-item:hover,
+.figure:hover,
+.monitoring-row:hover,
+.touch-screen-card:hover {
+  border-color: rgba(47, 143, 47, 0.32);
+  box-shadow: 0 24px 62px rgba(8, 39, 90, 0.14);
+}
+
+.info-card .icon,
+.solution-card .icon,
+.portal-card .icon,
+.layer-tab .icon {
+  color: var(--green);
+}
+
+.solution-card:nth-child(2),
+.metric-card:nth-child(2),
+.alignment-card:nth-child(2),
+.solution-card:nth-child(3),
+.metric-card:nth-child(3),
+.alignment-card:nth-child(3),
+.solution-card:nth-child(4),
+.metric-card:nth-child(4),
+.alignment-card:nth-child(4) {
+  background:
+    radial-gradient(circle at 78% 8%, rgba(11, 45, 93, 0.08), transparent 15rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(241, 248, 239, 0.82));
+}
+
+.ecosystem::before,
+.timeline::before {
+  background: linear-gradient(90deg, transparent, rgba(47, 143, 47, 0.35), rgba(11, 45, 93, 0.22), transparent);
+}
+
+.layer-tab,
+.project-subnav {
+  border-color: rgba(11, 45, 93, 0.12);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 14px 34px rgba(8, 39, 90, 0.08);
+}
+
+.layer-tab:hover,
+.layer-tab.active,
+.project-subnav a {
+  color: var(--navy);
+}
+
+.layer-tab.active,
+.project-subnav a:hover {
+  border-color: rgba(47, 143, 47, 0.28);
+  background: rgba(241, 248, 239, 0.9);
+}
+
+.layer-visual.shuttle,
+.layer-visual.green,
+.layer-visual.bike,
+.layer-visual.pmis {
+  background:
+    radial-gradient(circle at 38% 34%, rgba(126, 189, 67, 0.2), transparent 22rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(234, 244, 232, 0.78));
+}
+
+.dashboard-top,
+.footer-bottom {
+  border-color: rgba(11, 45, 93, 0.12);
+}
+
+.dashboard-top strong {
+  color: var(--navy);
+}
+
+.bars span {
+  background: linear-gradient(180deg, var(--mint), var(--green));
+  box-shadow: 0 10px 24px rgba(47, 143, 47, 0.18);
+}
+
+.dashboard-note,
+.dashboard-note.standalone {
+  color: #4f6570;
+  border-color: rgba(11, 45, 93, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.touch-screen-card {
+  background: #ffffff;
+}
+
+.touch-screen-card img {
+  background: #f4f7f2;
+}
+
+.touch-screen-card figcaption {
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.main-phone,
+.secondary-phone {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(232, 244, 230, 0.84));
+  border-color: rgba(11, 45, 93, 0.13);
+}
+
+.phone {
+  color: var(--navy);
+  background:
+    radial-gradient(circle at 28% 12%, rgba(126, 189, 67, 0.18), transparent 28%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(236, 246, 233, 0.9));
+  box-shadow:
+    0 24px 70px rgba(8, 39, 90, 0.14),
+    inset 0 0 0 5px rgba(255, 255, 255, 0.72);
+}
+
+.phone span,
+.phone small {
+  color: #4f6570;
+  border-color: rgba(11, 45, 93, 0.12);
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.strategy-outcome {
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 16% 10%, rgba(126, 189, 67, 0.28), transparent 16rem),
+    linear-gradient(135deg, #09295c 0%, #0b3c68 52%, #2f8f2f 100%);
+}
+
+.strategy-outcome h3,
+.strategy-outcome p {
+  color: #ffffff;
+}
+
+.feedback-prototype label {
+  color: var(--navy);
+}
+
+.feedback-prototype select,
+.feedback-prototype textarea {
+  color: var(--navy);
+  border-color: rgba(11, 45, 93, 0.14);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.feedback-prototype select:focus,
+.feedback-prototype textarea:focus {
+  border-color: rgba(47, 143, 47, 0.45);
+  box-shadow: 0 0 0 4px rgba(47, 143, 47, 0.1);
+}
+
+.company-profile img {
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(8, 39, 90, 0.1);
+}
+
+.footer {
+  background:
+    radial-gradient(circle at 76% 8%, rgba(126, 189, 67, 0.18), transparent 28rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(237, 245, 236, 0.96));
+  border-color: rgba(11, 45, 93, 0.12);
+}
