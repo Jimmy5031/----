@@ -146,9 +146,32 @@ const figures = [
   ['Year 1 OPEX Coverage Ratio', '125.0%'],
 ];
 
+const featuredTabs = [
+  ['layers', '5', 'integrated layers'],
+  ['pmis', 'PMIS', 'monitored'],
+  ['value', '10-year', 'value view'],
+];
+
+const layerSnapshot = [
+  ['Park & Ride', 'Gate interception', 72],
+  ['E-Shuttle', 'Campus circulation', 68],
+  ['Green Spine', 'Walkability spine', 61],
+  ['E-Bicycle', 'Last-mile access', 56],
+  ['UM Touch + PMIS', 'Digital control layer', 76],
+];
+
+const valueSnapshot = [
+  ['Financial control', 'TCO and OPEX visibility', 'RM230.03m PV'],
+  ['Carbon value', 'Mode shift and lower emissions', '426.8t CO2e/yr'],
+  ['User value', 'Access, wait time and inclusion', '82% target'],
+  ['Institutional value', 'SDG and reputation evidence', '4 SDG links'],
+];
+
 function App() {
   const [isFloatingNav, setIsFloatingNav] = useState(false);
   const [activeLayer, setActiveLayer] = useState(layers[0]);
+  const [activeFeaturedTab, setActiveFeaturedTab] = useState('pmis');
+  const [liveTick, setLiveTick] = useState(0);
 
   useEffect(() => {
     const updateNavState = () => {
@@ -165,6 +188,24 @@ function App() {
       window.removeEventListener('resize', updateNavState);
     };
   }, []);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setLiveTick((value) => value + 1);
+    }, 2200);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const livePmisMetrics = [
+    ['Progress', `${38 + (liveTick % 6)}%`, 62 + ((liveTick * 5) % 22)],
+    ['Ridership', `${12.8 + ((liveTick % 5) * 0.3).toFixed(1)}k`, 48 + ((liveTick * 7) % 26)],
+    ['CO2 saved', `${2.4 + ((liveTick % 4) * 0.2).toFixed(1)}t`, 54 + ((liveTick * 6) % 24)],
+    ['Open issues', `${17 - (liveTick % 4)}`, 38 + ((liveTick * 4) % 18)],
+  ];
+  const liveBars = [42, 58, 51, 66, 72, 63, 78, 69, 84, 76].map((value, index) =>
+    Math.min(92, value + ((liveTick + index) % 5) * 2),
+  );
 
   return (
     <div className="site-shell">
@@ -207,9 +248,71 @@ function App() {
                 A phased, smart and low-carbon proposal for Universiti Malaya's Carbon Neutral Campus 2050 direction.
               </p>
               <div className="hero-stats">
-                <span><strong>5</strong> integrated layers</span>
-                <span><strong>PMIS</strong> monitored</span>
-                <span><strong>10-year</strong> value view</span>
+                {featuredTabs.map(([id, lead, label]) => (
+                  <button
+                    className={`hero-stat-tab${activeFeaturedTab === id ? ' active' : ''}`}
+                    type="button"
+                    key={id}
+                    onClick={() => setActiveFeaturedTab(id)}
+                  >
+                    <strong>{lead}</strong> {label}
+                  </button>
+                ))}
+              </div>
+              <div className="featured-insight-panel">
+                {activeFeaturedTab === 'layers' && (
+                  <div className="layer-snapshot" aria-label="Five integrated project layers">
+                    {layerSnapshot.map(([name, role, score], index) => (
+                      <div className="snapshot-row" key={name}>
+                        <span className="snapshot-index">0{index + 1}</span>
+                        <div>
+                          <strong>{name}</strong>
+                          <small>{role}</small>
+                        </div>
+                        <span className="snapshot-meter" style={{ '--meter': `${score}%` }}>
+                          <i />
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {activeFeaturedTab === 'pmis' && (
+                  <div className="pmis-live-preview" aria-label="Live PMIS dashboard prototype">
+                    <div className="live-preview-top">
+                      <span><i /> Live PMIS prototype</span>
+                      <strong>Auto-refresh</strong>
+                    </div>
+                    <div className="live-preview-grid">
+                      {livePmisMetrics.map(([label, value, level]) => (
+                        <div className="live-tile" key={label}>
+                          <span>{label}</span>
+                          <strong>{value}</strong>
+                          <em style={{ '--level': `${level}%` }} />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="live-chart" aria-hidden="true">
+                      {liveBars.map((height, index) => (
+                        <span key={`${height}-${index}`} style={{ '--height': `${height}%` }} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {activeFeaturedTab === 'value' && (
+                  <div className="value-snapshot" aria-label="Ten-year value view">
+                    {valueSnapshot.map(([name, text, value]) => (
+                      <div className="value-row" key={name}>
+                        <div>
+                          <strong>{name}</strong>
+                          <small>{text}</small>
+                        </div>
+                        <span>{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -400,7 +503,10 @@ function App() {
               <div className="section-heading dashboard-copy">
                 <p className="eyebrow">PMIS / Sustainability Dashboard</p>
                 <h3>Data-driven monitoring for delivery, operations, finance and sustainability.</h3>
-                <p className="dashboard-note standalone">Prototype dashboard for proposal demonstration only.</p>
+                <p className="dashboard-note standalone">
+                  Real-time monitoring concept with live-updating prototype indicators. Scenario data for proposal
+                  demonstration only.
+                </p>
               </div>
               <div className="dashboard-panel expanded-dashboard">
                 <div className="dashboard-top">
