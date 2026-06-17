@@ -230,11 +230,13 @@ function App() {
   const [activeLayer, setActiveLayer] = useState(layers[0]);
   const [activeFeaturedTab, setActiveFeaturedTab] = useState('pmis');
   const [liveTick, setLiveTick] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigate = (path, hash = '') => {
     const nextPath = pageTitles.has(path) ? path : '/';
     window.history.pushState({}, '', `${nextPath}${hash ? `#${hash}` : ''}`);
     setCurrentPage(nextPath);
+    setIsMenuOpen(false);
     window.requestAnimationFrame(() => {
       if (hash) {
         document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1022,7 +1024,18 @@ function App() {
           <img src={logo} alt="Nadi Mobility" />
           <span className="brand-fallback">NADI MOBILITY</span>
         </a>
-        <nav className="nav-links" aria-label="Primary navigation">
+        <button
+          className={`menu-toggle${isMenuOpen ? ' is-open' : ''}`}
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded={isMenuOpen}
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <nav className={`nav-links${isMenuOpen ? ' is-open' : ''}`} aria-label="Primary navigation">
           {navItems.map(([item, path]) => (
             <a
               key={path}
